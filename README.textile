@@ -1,0 +1,35 @@
+arma is a Ruby library for querying "Armed Assault":http://arma2.com/ game servers.
+
+It definitely works with ArmA 2 servers, up to and including Operation Arrowhead, but should also work with original ArmA servers. All of the games and expansions in the series use version two of the "GameSpy Protocol":http://int64.org/docs/gamestat-protocols/gamespy2.html.
+
+h2. Usage
+
+First, install arma using whatever method you prefer:
+
+bc. rip install git://github.com/raws/arma.git
+
+Then, create an @Arma::Server@ object and use @update!@ to refresh its information:
+
+bc. server = Arma::Server.new("174.133.19.114", 2302)
+server.update!              #=> true
+server.name                 #=> "ArmA 2 Goons - A2 1.07 ACE 369"
+server.password?            #=> true
+server.status               #=> :playing
+server.mission.name         #=> "CO 11 Foxtrot Uniform v3"
+server.mission.difficulty   #=> :veteran
+server.max_players          #=> 64
+server.players.size         #=> 18
+server.players.first.name   #=> "RevDrMosesPLester"
+server.players.first.deaths #=> 69
+
+There are lots more server, mission and player attributes to have fun with, like the current mods in use and whether or not they're signed! Take a look at the (relatively simple) source code to find out what's available.
+
+h2. License <small>(MIT)</small>
+
+<small>Copyright (c) 2010 Ross Paffett</small>
+
+<small>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</small>
+
+<small>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</small>
+
+<small>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</small>
